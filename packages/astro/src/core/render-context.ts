@@ -8,7 +8,7 @@ import type {
 	RouteData,
 	SSRResult,
 } from '../@types/astro.js';
-import { type ActionAPIContext, ApiContextStorage } from '../actions/runtime/store.js';
+import { type ActionAPIContext } from '../actions/runtime/store.js';
 import { createGetActionResult } from '../actions/utils.js';
 import {
 	computeCurrentLocale,
@@ -144,16 +144,14 @@ export class RenderContext {
 					const result = await this.createResult(componentInstance!);
 					let response: Response;
 					try {
-						response = await ApiContextStorage.run(ctx, () => {
-							return renderPage(
-								result,
-								componentInstance?.default as any,
-								props,
-								{},
-								streaming,
-								this.routeData
-							);
-						});
+						response = await renderPage(
+							result,
+							componentInstance?.default as any,
+							props,
+							{},
+							streaming,
+							this.routeData
+						);
 					} catch (e) {
 						// If there is an error in the page's frontmatter or instantiation of the RenderTemplate fails midway,
 						// we signal to the rest of the internals that we can ignore the results of existing renders and avoid kicking off more of them.
