@@ -1,5 +1,13 @@
 # astro
 
+## 4.8.7
+
+### Patch Changes
+
+- [#11073](https://github.com/withastro/astro/pull/11073) [`f5c8fee`](https://github.com/withastro/astro/commit/f5c8fee76c5e688ef23c18be79705b18f1750415) Thanks [@matthewp](https://github.com/matthewp)! - Prevent cache content from being left in dist folder
+
+  When `contentCollectionsCache` is enabled temporary cached content is copied into the `outDir` for processing. This fixes it so that this content is cleaned out, along with the rest of the temporary build JS.
+
 ## 4.8.6
 
 ### Patch Changes
